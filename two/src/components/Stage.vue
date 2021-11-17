@@ -10,15 +10,58 @@ defineProps({
 
 <template>
   <div class="stage-box">
-    <div class="title">{{ title }}</div>
-    <div class="job" v-for="job in jobs">
+    <div class="title">
+      <div>{{ title }}</div>
+    </div>
+    <div
+      class="job"
+      v-for="(job, idx) in jobs"
+      :class="idx === 0 ? 'first-job' : 'more-job'"
+    >
       <job :name="job.name" :time="job.time" :status="job.status"></job>
     </div>
   </div>
 </template>
 
-<style scoped>
+<style>
 .stage-box .job {
-  margin-top: 20px;
+  padding: 20px;
+  position: relative;
+  z-index: 100;
+}
+
+.stage-box .first-job {
+  /* padding: 20px 40px; */
+  padding-left: 40px;
+}
+
+.stage-box .title {
+  align-self: flex-start;
+  margin-left: 40px;
+}
+
+.more-job::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 0;
+  border-left: 1px solid #d9d9d9;
+  border-right: 1px solid #d9d9d9;
+  border-bottom: 1px solid #d9d9d9;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
+}
+.first-job::before {
+  content: '';
+  position: absolute;
+  top: -50%;
+  left: 0;
+  border-bottom: 1px solid #d9d9d9;
+  width: 100%;
+  height: 100%;
+  z-index: -1;
 }
 </style>

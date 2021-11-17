@@ -16,16 +16,18 @@ defineProps({
   </div>
 </template>
 
-<style scoped>
+<style>
 .job-container {
   display: flex;
-  /* justify-content: space-between; */
   align-items: center;
   width: 200px;
   height: 50px;
   border: 1px solid rgb(238, 237, 237);
   border-radius: 25px;
+  background-color: white;
+  z-index: 100;
 }
+
 .job-container > div {
   flex-direction: row;
 }

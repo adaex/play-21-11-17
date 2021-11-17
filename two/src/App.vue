@@ -31,19 +31,41 @@ const pipeline = reactive([
 <template>
   <div class="pipeline">
     <stage
-      v-for="stage in pipeline"
+      v-for="(stage, idx) in pipeline"
       class="stage"
+      :class="{
+        'first-stage': idx === 0,
+        'last-stage': idx === pipeline.length - 1,
+      }"
       :title="stage.title"
       :jobs="stage.jobs"
     ></stage>
   </div>
 </template>
 
-<style>
+<style lang="scss">
 .pipeline {
   display: flex;
-}
-.pipeline .stage {
-  margin-left: 20px;
+  .stage {
+    display: flex;
+    align-items: flex-end;
+    flex-direction: column;
+  }
+  .first-stage {
+    .job {
+      padding-left: 0;
+    }
+    .title {
+      margin-left: 0;
+    }
+  }
+  .last-stage {
+    .job {
+      padding-right: 0;
+    }
+    .more-job::before {
+      border-right: 0;
+    }
+  }
 }
 </style>
