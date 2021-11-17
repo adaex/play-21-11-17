@@ -31,7 +31,6 @@ defineProps({
 }
 
 .stage-box .first-job {
-  /* padding: 20px 40px; */
   padding-left: 40px;
 }
 
